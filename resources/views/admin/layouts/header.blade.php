@@ -83,13 +83,13 @@
                             My Profile</a>
                         <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email me-1 ms-1"></i>
                             Inbox</a>
-                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        <a class="dropdown-item" href="{{ url('/admin/log-out') }}"
                            onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
                             <i class="ti-wallet m-r-5 m-l-5"></i> Logout
                         </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        <form id="logout-form" action="{{ url('/admin/log-out') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
 

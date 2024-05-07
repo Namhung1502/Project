@@ -6,9 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\frontend\MemberRegisterRequest;
 use App\Http\Requests\frontend\MemberLoginRequest;
-
+use Illuminate\Http\JsonResponse;
 class MemberController extends Controller
 {
     public function indexLogin(){
@@ -39,7 +38,7 @@ class MemberController extends Controller
     {
         return view('frontend.member.register');
     }
-    public function postRegister(MemberRegisterRequest $request){
+    public function postRegister(MemberLoginRequest $request){
         $dataInsert = $request->all();
         $dataInsert['level'] = 0;
         if(User::create($dataInsert)) {

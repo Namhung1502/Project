@@ -30,10 +30,7 @@ use App\Http\Controllers\Frontend\OnePageController;
 |
 */
 //Front end
-Route::group([
-    // chỉ vao folder frontend
-    'namespace' => 'Frontend'
-], function () {
+
     Route::get('/', [HomeController::class, 'index']);
     Route::post('index/ajax', [HomeController::class, 'ajaxProduct']);
 //cart, checkout-sendmail
@@ -49,7 +46,7 @@ Route::group([
 //shop product
     Route::prefix('/shop')->name('shop')->group(function() {
         Route::get('/', [ProductController::class, 'index'])->name('.index');
-        Route::get('/shop/product-detail/{id}', [ProductController::class, 'indexProductDetail']);
+        Route::get('/product-detail/{id}', [ProductController::class, 'indexProductDetail']);
     });
     //check not login for form login
     Route::group(['middleware' => 'memberNotLogin'], function () {
@@ -61,7 +58,7 @@ Route::group([
 
    });
     //check login
-    Route::group(['middleware' => 'member'], function() {
+    Route::group(['middleware' => 'member'] , function() {
         //product
         Route::prefix('/member/account')->name('account.')->group(function(){
             Route::get('/', [AccountController::class, 'index'])->name('index');
@@ -91,7 +88,6 @@ Route::group([
     Route::get('/search', [OnePageController::class, 'index']);
     Route::get('/search-advandce', [OnePageController::class, 'searchAdvandce']);
     Route::get('/search-price/ajax', [OnePageController::class, 'searchPrice']);
-});
 
 //Auth
 Auth::routes();
@@ -143,6 +139,7 @@ Route::group([
 
         Route::get('/error-404', [DashboardController::class, 'getError'])->name('getError');
     });
+    Route::post('/log-out', [App\Http\Controllers\Admin\UserController::class, 'logout']);
 });
 
 

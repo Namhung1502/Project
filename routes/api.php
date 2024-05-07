@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\MemberController;
 use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\MemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +21,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-    // member
-    // http:://..../api/login
-    Route::post('/member/login',[MemberController::class, 'login']);
+// member
+// http:://..../api/login
+Route::post('/member/login',[MemberController::class, 'login']);
+Route::post('/member/register',[MemberController::class, 'postRegister']);
 
-    //Blog Api
-    // http:://..../api/blog
-    Route::get('/blog',[BlogController::class, 'index']);
+
+
+//Blog Api
+// http:://..../api/blog
+Route::get('/blog',[BlogController::class, 'index']);

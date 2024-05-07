@@ -49,9 +49,6 @@ class OnePageController extends Controller
         if(!empty($status)){
             $product ->where('status', $status);
         }
-        // if(empty($name) && empty($price) && empty($id_category) && empty($id_brand) && empty($status)){
-        //     $product = $product->paginate(3);
-        // }
         $products = $product->orderBy('created_at', 'DESC')->paginate(6);
         return view('frontend.onepage.search-advandce', compact('dataCategory', 'dataBrand', 'products'));
     }
